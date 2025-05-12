@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Your To Do List</title>
+    <link rel="icon" type="image/x-icon" href="ToDo.ico" />
+  </head>
+  <body>
+    <section class="main">
+      <aside class="taskForm">
+        <form>
+          <label for="task">
+            <input
+              type="text"
+              id="task"
+              name="task"
+              placeholder="Nome da tarefa*"
+            />
+          </label>
+
+          <label for="taskDesc">
+            <textarea
+              id="taskDesc"
+              name="taskDesc"
+              placeholder="Descrição da tarefa*"
+              rows="4"
+            ></textarea>
+          </label>
+
+          <label for="taskDate">
+            <input type="date" name="taskDate" id="taskDate" />
+
+            <p style="font-size: 14px; color: #0000005e; text-align: center">
+              Estimativa de término (opcional)
+            </p>
+          </label>
+          <div class="taskButtons">
+            <button type="button" onclick="addTask()"><p>Adicionar</p></button>
+            <button type="button" class="cancelButton" onclick="hideForm()">
+              <p>Cancelar</p>
+            </button>
+          </div>
+          <button
+            class="mobileActivitiesButton"
+            type="button"
+            onclick="showActivities()"
+          >
+            <p>Atividades</p>
+          </button>
+        </form>
+
+        <section class="activitiesContainer">
+          <p>Atividades</p>
+
+          <div class="activities"></div>
+        </section>
+      </aside>
+      <button class="mobileButton" onclick="showForm()">
+        <img
+          width="40px"
+          height="40px"
+          src="https://img.icons8.com/sf-regular/48/plus.png"
+        />
+      </button>
+
+      <main class="container"></main>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>

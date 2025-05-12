@@ -1,0 +1,528 @@
+@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun:wght@400..700&family=Roboto:ital,wdth,wght@0,75..100,100..900;1,75..100,100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  height: 100vh;
+  font-family: "Reem Kufi Fun", "sans-serif";
+  background-color: #232946;
+  height: calc(100vh - env(safe-area-inset-bottom));
+}
+
+.backgroundImg {
+  position: fixed;
+}
+
+.errPopUp {
+  margin-top: 20px;
+  padding: 5px;
+  text-align: center;
+
+  height: 45px;
+  width: 200px;
+  border-radius: 10px;
+  background-color: red;
+  box-shadow: 0px 0px 3px 2px #000000;
+
+  color: white;
+  top: 0dvh;
+  left: 42dvw;
+  z-index: 2;
+  position: fixed;
+
+  animation: fromTop 0.5s ease-out;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+
+  height: 100vh;
+  width: auto;
+}
+
+.taskForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+
+  height: 100%;
+  width: 280px;
+
+  background-color: #b8c1ec;
+}
+
+.container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+
+.taskFocused {
+  background-color: #b8c1ec;
+
+  height: 170px;
+  width: 300px;
+  margin: 10px;
+
+  border-radius: 10px;
+}
+
+.taskCard {
+  display: flex;
+  flex-direction: column;
+
+  height: 170px;
+  width: 300px;
+  background-color: #eebbc3;
+
+  margin: 20px;
+
+  border-radius: 10px;
+
+  transition: ease-in-out 0.5s;
+}
+
+.taskCard:hover {
+  transform: scale(1.1);
+  transition: ease-in-out 0.5s;
+}
+
+.titleCard {
+  height: 30px;
+  width: 100%;
+
+  background-color: #b8c1ec;
+
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.titleCard > p {
+  margin: 5px;
+}
+
+.descCard {
+  height: 110px;
+  width: 100%;
+
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.descCard > p {
+  padding: 5px;
+}
+
+.dateCard {
+  height: 30px;
+  width: 100%;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.dateCard > p {
+  padding: 5px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input,
+textarea {
+  margin-top: 20px;
+  padding: 5px;
+
+  width: 200px;
+  height: 30px;
+
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #b8c1ec;
+  border-width: 2px;
+  transition: border-color 0.3s ease-in-out;
+
+  font-family: "reem kufi fun", "sans-serif";
+}
+
+textarea {
+  height: 80px;
+  resize: none;
+}
+
+input:focus,
+textarea:focus {
+  border-style: solid;
+  border-color: #eebbc3;
+  background-color: #f8f9ff;
+
+  outline: none;
+
+  transition: border-color 0.3s ease-in-out;
+}
+
+button {
+  margin: 20px;
+
+  width: 90px;
+  height: 40px;
+
+  background-color: #eebbc3;
+
+  border-color: #000000;
+  border: solid 2px;
+  border-radius: 10px;
+
+  color: #000000;
+  font-family: "Reem Kufi Fun", "sans-serif";
+
+  transition: ease-in-out 0.3s;
+}
+
+button:hover {
+  border-style: solid;
+  border-color: #eebbc3;
+
+  transform: scale(1.1);
+  transition: ease-in-out 0.3s;
+
+  cursor: pointer;
+}
+
+.buttons {
+  height: 140px;
+  width: 100%;
+
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.buttons > img {
+  height: 40px;
+  width: 40px;
+
+  border: solid 2px;
+  border-color: #000000;
+  border-radius: 10px;
+  transition: ease-in-out 0.2s;
+}
+
+.buttons > img:hover {
+  transform: scale(1.1);
+  transition: ease-in-out 0.2s;
+  cursor: pointer;
+  background-color: #eebbc3;
+  border-color: #eebbc3;
+  transition: ease-in-out 0.2s;
+}
+
+.activitiesContainer {
+  width: 100%;
+
+  height: 44%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  flex-wrap: nowrap;
+
+  align-items: center;
+
+  background-color: none;
+}
+
+.activitiesContainer > p {
+  margin-bottom: 10px;
+}
+
+.activities {
+  display: flex;
+  flex-direction: column-reverse;
+  /*justify-content: flex-end;*/
+
+  height: auto;
+  width: 90%;
+
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.activities ::-webkit-scrollbar {
+  width: 0;
+}
+
+.taskDone {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 60px;
+  width: 95%;
+  border-radius: 10px;
+  background-color: #232946;
+  padding: 5px;
+  color: #dfdfe0;
+
+  margin-bottom: 10px;
+}
+
+.taskUndone {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 60px;
+  width: 95%;
+  border-radius: 10px;
+  background-color: #232946;
+  padding: 5px;
+  color: #dfdfe0;
+
+  margin-bottom: 10px;
+}
+
+.checked {
+  display: flex;
+}
+
+.undone {
+  display: flex;
+}
+
+.taskChecked {
+  height: 30px;
+  width: 30px;
+  background-color: #eebbc3;
+  border-radius: 10px;
+  border: solid 2px;
+  border-color: #000000;
+}
+
+.taskUnchecked {
+  height: 30px;
+  width: 30px;
+  background-color: #f5526b;
+  border-radius: 10px;
+  border: solid 2px;
+  border-color: #000000;
+}
+
+.editScreen {
+  display: flex;
+  height: 100dvh;
+  width: 100dvw;
+  position: fixed;
+  top: 0px;
+  z-index: 9;
+  background-color: #00000082;
+  justify-content: center;
+  align-items: center;
+}
+
+.editCard {
+  display: flex;
+  height: 300px;
+  width: 300px;
+  background-color: #b8c1ec;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  border: solid 2px;
+  border-color: #000000;
+}
+
+.mobileButton {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 55px;
+  height: 50px;
+  border-radius: 13px;
+  position: fixed;
+  top: 89dvh;
+  left: 40dvw;
+}
+
+.mobileActivitiesButton {
+  display: none;
+  background-color: #232946;
+  color: #eebbc3;
+  border: solid 2px;
+  border-color: #eebbc3;
+}
+
+.mobileActivitiesButton:hover {
+  border-color: #232946;
+}
+
+.taskButtons {
+  display: flex;
+}
+
+.cancelButton {
+  display: none;
+  background-color: #f8f9ff;
+  color: #f5526b;
+}
+
+@keyframes start {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fromTop {
+  from {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes retractForm {
+  from {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(300px);
+    opacity: 0;
+  }
+}
+
+@keyframes expand {
+  from {
+    transform: translateY(100px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes retract {
+  0% {
+    transform: translateY(-100px);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-50px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-25px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .errPopUp {
+    left: 12svh;
+  }
+
+  .mobileButton {
+    display: flex;
+    animation: start 0.5s ease-out;
+    z-index: 9;
+  }
+
+  .mobileActivitiesButton {
+    display: block;
+  }
+
+  .cancelButton {
+    display: block;
+  }
+
+  .activitiesContainer {
+    display: none;
+    background-color: #b8c1ec;
+  }
+
+  .activities {
+    align-items: center;
+  }
+
+  .taskDone {
+    width: 61%;
+  }
+  .taskUndone {
+    width: 61%;
+  }
+
+  .container {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    flex-direction: column-reverse;
+    align-content: center;
+    align-items: center;
+  }
+
+  .taskForm {
+    display: none;
+    width: 100%;
+    height: 65svh;
+    position: fixed;
+    bottom: 0svh;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 0;
+    z-index: 7;
+
+    animation: start 0.5s ease-out;
+  }
+}
+@media (min-width: 1024px) {
+  .activitiesContainer {
+    width: 100%;
+
+    height: 44% !important;
+
+    display: flex !important;
+
+    flex-direction: column;
+
+    flex-wrap: nowrap;
+
+    align-items: center;
+
+    background-color: none;
+  }
+}
